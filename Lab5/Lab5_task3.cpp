@@ -25,8 +25,10 @@ public:
 	{}
 	void setValues(string str1, string str2)
 	{
-		cout << "Enter first string:";
+		cout << "\nEnter first string:";
 		getline(cin, str1);
+		cout << endl;
+		cin.ignore();
 		cout << "Enter second string:";
 		getline(cin, str2);
 	}
@@ -50,21 +52,32 @@ public:
 	int compare(string str1, string str2)
 	{
 		int length = maxLength();
-		for(int i = 0; i<length; i++)
-		if (str1[i] == str2[i])
-			cout << "Equal strings.\n";
-
-		else if (str1[i] > str2[i])
-			cout << "String 1 is greater than string 2.\n";
-
-		else
-			cout << "string 2 is greater than string 1";
+		for (int i = 0; i < length; i++)
+		{
+			if (str1[i] == str2[i])
+			{
+				cout << "Equal strings.\n";
+				return 0;
+			}
+			else if (str1[i] > str2[i])
+			{
+				cout << "String 1 is greater than string 2.\n";
+				return 1;
+			}
+			else
+			{
+				cout << "string 2 is greater than string 1";
+				return -1;
+			}
+		}
 	}
 	void copy(string str1, string str2)
-	{                             //str1 = source    str2 = destination
-		if (str1 != " ")
+	{                       
+		int i = 0;                               //str1 = source    str2 = destination
+		while(str1[i] != '\0')
 		{
 			str1 = str2;
+			i++;
 		}
 		cout << str1;
 	}
@@ -76,28 +89,38 @@ public:
 	}
 	int searchword(string word)
 	{
-		for (int i = 0; first != " "; i++)
+		for (int i = 0; first[i] || second[i] != '\0'; i++)
 		{
-			if (word == first[i])
+			if (word[i] == first[i])
 			{
-				cout << word << endl;
+				return word[i];
 			}
-			else
-				cout << "Word's not found.\n";
+			if (word[i] == second[i])
+			{
+				return word[i];
+			}
 		}
+
 	}
 	int searchChar(char ch)
 	{
 		cout << "Enter the character you want to find in the given two strings:";
 		cin >> ch;
-		for (int i = 0; first!= " "; i++)
+		for (int i = 0; first[i] || second[i] != '\0'; i++)
 		{
 			if (ch == first[i])
 			{
 				cout << ch << endl;
+				return ch;
+			}
+			if (ch == second[i])
+			{
+				cout << ch << endl;
+				return ch;
 			}
 			else
 				cout << "Word's not found.\n";
+			return 0;
 		}
 		
 	}
@@ -167,6 +190,8 @@ int main()
 			case 8:
 			{
 				cout << "Searchchar:\n";
+				cout << "Enter character:";
+				cin >> ch;
 				st.searchChar(ch);
 				cout << endl;
 				break;
