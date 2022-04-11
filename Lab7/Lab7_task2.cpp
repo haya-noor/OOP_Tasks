@@ -104,6 +104,18 @@ public:
 		else
 			cout << "Not valid for multiplication.\n";
 	}
+	friend ostream& operator<<(ostream& out, MatrixType& mt)
+	{
+		for (int i = 0; i < mt.rows; i++)
+		{
+			for (int j = 0; j < mt.cols; j++)
+			{
+				out << matrix[i][j] << " ";
+			}
+			out << endl;
+		}
+		return out;
+	}
 };
 int main()
 {
