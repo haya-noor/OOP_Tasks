@@ -3,16 +3,14 @@ using namespace std;
 
 class person
 {
-	string name1;
-	string name2;
-	int regNo1;
-	int regNo2;
+	string name;
+	int regNo;
 	static int count;
 public:
 	person()
 	{
-		name1 = name2 = " ";
-		regNo1 = regNo2 = 0;
+		name = " ";
+		regNo = 0;
 		count++;
 	}
 	friend ostream& operator<(ostream& out, person p)
@@ -20,13 +18,9 @@ public:
 	}
 	friend istream& operator>(istream& in, person p)
 	{
-		cout << "Person No. 1:\n";
 		cout << "Enter Name and ID:";
-		in >> p.name1 >> p.regNo1;
-		cout << endl;
-		cout << "Person No. 2:\n";
-		cout << "Enter Name and ID:";
-		in >> p.name2 >> p.regNo2;
+		in >> p.name >> p.regNo;
+		return in;
 	}
 	friend class date;
 };
@@ -42,23 +36,14 @@ public:
 		day = month = year = 0;
 	}
 	~date(){}
-	//positive values******
-	void positive()
-	{
-		if (day < 0 && day > 30 || month < 1 && month >12)
-		{
-			cout << "Please enter positive and within limit values.\n";
-		}
-	}
-	//**********
 	friend ostream& operator<<(ostream& out, date& d)
 	{
 	}
 	friend istream& operator>(istream& in, date& d)
 	{
-
 		cout << "Enter joining date(yy/mm/dd):";
 		in >> d.year >> d.month >> d.day;
+		return in;
 	}
 	bool operator <(date& d)
 	{
@@ -78,11 +63,9 @@ public:
 
 int main()
 {
-	int year, month, day;
-	//string p1;
-	date d1(int year, int month, int day);
-
-	date d2(int year, int month, int day);
-
-	person p1;
+	person p1, p2;
+	cin>>p1;
+	cout<<p1;
+	cin>>p2;
+	cout<<p2;
 }
