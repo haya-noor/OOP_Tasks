@@ -1,6 +1,7 @@
+//Left shift operation
 #include <iostream>
 using namespace std;
-#define Twopower(n1, n2) ((n1) << (n2))
+#define leftshift(n1, n2) ((n1) << (n2))
 int main()
 {
 	int n1, n2;
@@ -16,7 +17,7 @@ int main()
 
 		int result;
 
-		result = Twopower(n1, n2);
+		result = leftshift(n1, n2);
 
 		cout << "The reuslt is: " << result<<endl;
 
