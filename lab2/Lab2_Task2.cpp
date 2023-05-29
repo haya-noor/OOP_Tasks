@@ -1,21 +1,29 @@
-//Left shift operation 
-#include<iostream>
+#include <iostream>
 using namespace std;
 #define Twopower(n1, n2) ((n1) << (n2))
 int main()
 {
 	int n1, n2;
-	cout << "Enter  first number:";
-	cin >> n1;
+	char c;
 
-	cout << "Enter 2nd number:";
-	cin >> n2;
+	do
+	{
+		cout << "Enter  first number:";
+		cin >> n1;
 
-	int result;
+		cout << "Enter 2nd number:";
+		cin >> n2;
 
-	result = Twopower(n1, n2);
+		int result;
 
-	cout << "The reuslt is: " << result;
+		result = Twopower(n1, n2);
+
+		cout << "The reuslt is: " << result<<endl;
+
+		cout << "Enter any key to continye or e to exit: ";
+		cin >> c;
+
+	} while (c != 'e');
 
 	return 0;
 }
