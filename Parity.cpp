@@ -1,26 +1,27 @@
 
-#include <iostream>
+#include<iostream>
 using namespace std;
 
 class Parity
 {
-private:
+	private:
 	int size;
-	int *parity;
+	int* parity;
 
-public:
+	public:
 	Parity()
 	{
 		size = 0;
 		parity = new int[size];
 		*parity = 0;
 	}
+    
 	void put(int num)
 	{
 		size++;
 		int *temp = new int[size];
 		int i = 0;
-		for (; i < size - 1; i++)
+		for(; i<size-1; i++)
 		{
 			temp[i] = parity[i];
 		}
@@ -30,74 +31,67 @@ public:
 	}
 	void print()
 	{
-		cout << "The elements are: \n";
-		for (int i = 0; i < size; i++)
+		for(int i = 0; i<size; i++)
 		{
-			cout << parity[i] << " ";
+			cout<<parity[i]<<" ";
 		}
-		cout << endl;
 	}
-	void Delete(int num)
+	void deletenum(int num)
 	{
 		size--;
 		int *temp = new int[size];
-		for (int i = 0; i < size; i++)
+		for(int i = 0; i<size; i++)
 		{
 			temp[i] = parity[i];
 		}
 		delete[] parity;
 		parity = temp;
 	}
-	int test()
+	void test(int num)
 	{
-		if (size % 2 == 0)
+		if(num % 2 == 0)
 		{
-			return 1;
+			cout<<"Even";
 		}
 		else
 		{
-			return 0;
+			cout<<"Odd";
 		}
-	}
-	~Parity() // destructor
-	{
-		delete[] parity;
+		cout<<endl;
 	}
 };
-
+ 
 int main()
 {
 	Parity p;
-	int choose;
-	int num;
-	cout << " Choose one of the following:\n";
-	cout << " 1) Put\n 2) Print\n 3) Delete\n 4) Test\n 5) Exit\n";
-	cin >> choose;
-	while (choose != 5)
+	int choice, num;
+	cout << "1)Input a number.\n2)Print the number.\n3)Delete the number.\n4)Test for even and odd.\n5)Exit\n";
+	while (choice != 5)
 	{
-		switch (choose)
+		cout << "Enter your choice:";
+		cin >> choice;
+		switch (choice)
 		{
 		case 1:
-			cout << "Enter a number: ";
+			cout << "Input a number:";
 			cin >> num;
 			p.put(num);
+			cout << endl;
 			break;
 		case 2:
 			p.print();
+			cout << endl;
 			break;
 		case 3:
-			cout << "Enter a number: ";
+			cout<<"Enter num: ";
 			cin>>num;
-			p.Delete(num);
+			p.deletenum(num);
 			break;
 		case 4:
-			cout << p.test() << endl;
-		default:
+			p.test(num);
+			break;
+		case 5:
 			break;
 		}
-		cout << " Choose one of the following:\n";
-		cout << " 1) Put\n 2) Print\n 3) Delete\n 4) Test\n 5) Exit\n";
-		cin >> choose;
 	}
-	return 0;
 }
