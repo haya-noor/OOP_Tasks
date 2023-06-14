@@ -1,0 +1,62 @@
+#include<iostream>
+using namespace std;
+
+struct DOB
+{
+    int day;
+    string month;
+    int year;
+};
+struct user
+{
+    string name, city;
+    int age;
+    struct DOB d;
+};
+
+int main()
+{
+    int size = 3;
+    user arr[3];
+
+    for(int i = 0; i<3; i++)
+    {
+        cout<<"Enter the record of "<<i + 1 <<" user\n";
+        cout<<"Enter name: ";
+        cin>>arr[i].name;
+        cout<<"Enter city: ";
+        cin>>arr[i].city;
+        cout<<"Enter age:";
+        cin>>arr[i].age;
+
+        cout<<"Enter date of birth of "<<i+1<<" user\n";
+        cout<<"Enter day:";
+        cin>>arr[i].d.day;
+        cout<<"Enter month: ";
+        cin>>arr[i].d.month;
+        cout<<"Enter year: ";
+        cin>>arr[i].d.year;
+    }
+
+    cout<<"Enter date of birth to check if it's someone's birthday\n";
+    DOB d1;
+    cout<<"Enter day: ";
+    cin>>d1.day;
+    cout<<"Enter month:";
+    cin>>d1.month;
+    cout<<"Enter year:";
+    cin>>d1.year;
+
+    for(int j = 0; j< size; j++)
+    {
+        if(d1.day == arr[j].d.day && d1.month == arr[j].d.month && d1.year == arr[j].d.year)
+        {
+            cout<<"It's "<<arr[j].name<<"'s birthday. Happy birthday " <<arr[j].name<<endl;
+        }
+        else
+        {
+            cout<<"It's nobody's birthday\n";
+        }
+    }
+    return 0;
+}
