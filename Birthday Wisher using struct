@@ -61,8 +61,14 @@ int main()
     return 0;
 }
 
-//second method
+
+
+
+
+//Birthday wisher with Exception handling
 #include<iostream>
+#include <algorithm> // For transform
+#include <cstring>   // For strcmp
 using namespace std;
 
 struct DOB {
@@ -77,16 +83,7 @@ struct User {
     DOB d;
 };
 
-bool isvalid_month(string& month) {
-    string validMonths[] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
-    //for loop
-    for (string& validMonth : validMonths) {
-        if (validMonth == month)
-            return true;
-    }
-    return false;
-}
-
+//Checks if the day entered by the user is valid or not
 bool isvalid_day(int day, string& month, int year) {
     if (month == "February") {
         if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
@@ -104,8 +101,28 @@ bool isvalid_day(int day, string& month, int year) {
     }
 }
 
+//checks if the month entered by the user is valid or not
+bool isvalid_month(string& month) {
+    string validMonths[] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+    
+    // Convert the input month to lowercase
+    string lowercaseMonth = month;
+    transform(lowercaseMonth.begin(), lowercaseMonth.end(), lowercaseMonth.begin(), ::tolower);
+
+    // Check if the lowercase month matches any valid month names or abbreviations
+    for (string& validMonth : validMonths) {
+        string lowercaseValidMonth = validMonth;
+        transform(lowercaseValidMonth.begin(), lowercaseValidMonth.end(), lowercaseValidMonth.begin(), ::tolower);
+
+        if (lowercaseValidMonth == lowercaseMonth || validMonth.size() >= month.size() && strncmp(validMonth.c_str(), month.c_str(), month.size()) == 0)
+            return true;
+    }
+    return false;
+}
+
+//checks if the year entered by the user is valid or not
 bool isvalid_year(int year) {
-    return year >= 1900;
+    return year >= 1900 && year <= 2023;
 }
 
 int main() {
@@ -195,4 +212,6 @@ int main() {
     delete[] arr; // Free the dynamically allocated memory
     return 0;
 }
+
+
 
