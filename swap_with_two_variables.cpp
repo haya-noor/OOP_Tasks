@@ -20,12 +20,6 @@ class swappp
         cin>>b;
     }
 
-    void getter()
-    {
-        cout<<"a = "<<a<<endl;
-        cout<<"b = "<<b<<endl;
-    }
-
     void swapppp()
     {
         a = a + b;
